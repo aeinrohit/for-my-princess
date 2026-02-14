@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>💗Happy Birthday My Amira💗</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Dancing+Script:wght@600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+    <style>
+        :root {
+            --primary-color: #ff758c;
+            --secondary-color: #ff7eb3;
+            --text-color: #ffffff;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: var(--text-color);
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+            overflow-x: hidden;
+            padding: 40px 0;
+            user-select: none; 
+            -webkit-user-select: none;
+        }
+
+        .card-container {
+             animation: floatCard 6s ease-in-out infinite;
+             z-index: 10;
+             width: 90%;
+             max-width: 400px; 
+             margin: auto; 
+        }
+
+        .card {
+            position: relative;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            padding: 25px 20px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            animation: fadeIn 1.5s ease, bounceIn 1.5s ease 0.2s both;
+        }
+
+        .birthday-badge {
+            position: absolute;
+            top: -35px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90px;
+            z-index: 100;
+            filter: drop-shadow(0 5px 15px rgba(0,0,0,0.2));
+            pointer-events: none;
+            animation: rotateBadge 8s ease-in-out infinite;
+        }
+
+        @keyframes rotateBadge {
+            0%, 100% { transform: translateX(-50%) rotate(-5deg) scale(1); }
+            50% { transform: translateX(-50%) rotate(10deg) scale(1.1); }
+        }
+        
+        @keyframes floatCard {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        h1 {
+            font-family: 'Dancing Script', cursive;
+            font-weight: 700;
+            font-size: clamp(20px, 8vw, 32px);
+            margin-bottom: 5px;
+            margin-top: 30px;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        p.subtitle {
+            font-weight: 300;
+            font-size: 14px;
+            opacity: 0.9;
+            margin-bottom: 15px;
+        }
+
+        .slideshow-container {
+            display: none; 
+            width: 100%;
+            position: relative;
+            margin: auto;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            margin-bottom: 15px;
+            aspect-ratio: 1 / 1;
+        }
+
+        .mySlides {
+            display: none;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .fade {
+            animation: zoomFade 3s ease-in-out forwards;
+        }
+
+        @keyframes zoomFade {
+            0% { opacity: 0; transform: scale(1.1); }
+            15% { opacity: 1; }
+            85% { opacity: 1; }
+            100% { opacity: 0; transform: scale(1); }
+        }
+
+        .gift {
+            font-size: 60px;
+            cursor: pointer;
+            animation: shake 1.5s infinite;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .message {
+            font-size: 14px;
+            line-height: 1.6;
+            text-align: left;
+            background: rgba(255,255,255,0.1);
+            padding: 15px;
+            border-radius: 12px;
+            max-height: 350px;
+            overflow-y: auto;
+        }
+
+        .ps-btn {
+            background: linear-gradient(135deg, #ff7eb3, #ff758c);
+            color: white;
+            border: 1px solid rgba(255,255,255,0.4);
+            padding: 12px 20px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-top: 15px;
+            width: 100%;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .hearts { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1; }
+        .heart { position: absolute; animation: heartRain linear forwards; }
+
+        @keyframes heartRain {
+            0% { transform: translateY(-10vh); opacity: 0; }
+            10% { opacity: 1; }
+            100% { transform: translateY(110vh); opacity: 0; }
+        }
+    </style>
+</head>
+
+<body>
+
+    <audio id="bgMusic" loop>
+        <source src="https://cdn.pixabay.com/download/audio/2022/10/14/audio_8a24345607.mp3?filename=romantic-piano-124758.mp3" type="audio/mpeg">
+    </audio>
+
+    <div class="hearts" id="heartsContainer"></div>
+
+    <div class="card-container">
+        <div class="card">
+            <img src="https://uploads.onecompiler.io/44dmh5f7g/44dkqm9fu/%E2%80%94Pngtree%E2%80%94cute%20happy%20birthday%20to%20you_8629345.png" class="birthday-badge">
+
+            <h1>💗Happy Birthday My Amira💗</h1>
+            <p class="subtitle" id="instructionText">Tap the gift 🎁</p>
+
+            <div class="slideshow-container" id="mySlideshow">
+                <img src="https://uploads.onecompiler.io/44dmh5f7g/44dkqm9fu/Amira1.png" class="mySlides fade">
+                <img src="https://uploads.onecompiler.io/44dmh5f7g/44dkqm9fu/Amira2.png" class="mySlides fade">
+                <img src="https://uploads.onecompiler.io/44dmh5f7g/44dkqm9fu/Amira3.png" class="mySlides fade">
+            </div>
+
+            <div id="giftBox" class="gift" onclick="openGift()">🎁</div>
+
+            <div class="message-container" id="msgContainer" style="display:none;">
+                <div class="message" id="letterBox">
+                    <p id="typedText" style="margin: 0;"></p>
+                </div>
+                
+                <button id="psButton" class="ps-btn" style="display: none;" onclick="showSecret()">
+                    My Feelings... 🤫
+                </button>
+
+                <div id="secretMessage" style="display:none; margin-top:10px; background: rgba(255,255,255,0.2); padding: 20px; border-radius: 12px;">
+                    <div style="font-family:'Dancing Script'; font-size:24px; font-weight:700;">Mon secret est... Je t'aime plus qu'hier et moins que demain. ❤️</div>
+                    <div style="font-size:12px; opacity:0.8; font-style:italic; margin-top:5px;">(My secret is... I love you more than yesterday and less than tomorrow.)</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Restored full letter text
+        const fullText = `Ma très chère Amira,
+
+En ce jour si spécial, je veux juste que tu saches à quel point mes sentiments pour toi sont profonds. Tu es ma paix, mon bonheur, et la plus belle partie de ma vie.
+
+Même si nous sommes loin l'un de l'autre, mon cœur reste toujours avec toi. Ton sourire illumine mes pires journées, et ton amour me donne de la force.
+
+Je te promets de toujours prendre soin de toi, de te soutenir et de t'aimer de tout mon cœur.
+
+Joyeux anniversaire, mon amour ❤️
+À toi pour toujours,
+Rohit`;
+
+        let slideIndex = 0;
+        function showSlides() {
+            let slides = document.getElementsByClassName("mySlides");
+            for (let i = 0; i < slides.length; i++) slides[i].style.display = "none";
+            slideIndex++;
+            if (slideIndex > slides.length) slideIndex = 1;
+            slides[slideIndex-1].style.display = "block";
+            setTimeout(showSlides, 3000); // 3 second fast interval
+        }
+
+        let index = 0;
+        function typeWriter() {
+            if (index < fullText.length) {
+                let char = fullText.charAt(index);
+                document.getElementById("typedText").innerHTML += char === '\n' ? '<br>' : char;
+                index++;
+                setTimeout(typeWriter, 30);
+            } else {
+                setTimeout(() => {
+                    document.getElementById("psButton").style.display = "block";
+                }, 800);
+            }
+        }
+
+        function openGift() {
+            document.getElementById('bgMusic').play().catch(() => {});
+            document.getElementById("giftBox").style.display = "none";
+            document.getElementById("instructionText").style.display = "none";
+            document.getElementById("mySlideshow").style.display = "block";
+            document.getElementById("msgContainer").style.display = "block";
+            showSlides();
+            typeWriter();
+            confetti({ particleCount: 200, spread: 70, origin: { y: 0.7 } });
+        }
+
+        function showSecret() {
+            document.getElementById("psButton").style.display = "none";
+            document.getElementById("letterBox").style.display = "none"; 
+            document.getElementById("secretMessage").style.display = "block";
+            confetti({ particleCount: 150, spread: 80, colors: ['#ff758c', '#ffffff'] });
+        }
+
+        // Falling hearts background
+        setInterval(() => {
+            const heart = document.createElement('div');
+            heart.className = 'heart';
+            heart.innerHTML = '❤️';
+            heart.style.left = Math.random() * 100 + '%';
+            heart.style.fontSize = Math.random() * 10 + 10 + 'px';
+            const duration = Math.random() * 3 + 3;
+            heart.style.animationDuration = duration + 's';
+            document.getElementById('heartsContainer').appendChild(heart);
+            setTimeout(() => heart.remove(), duration * 1000);
+        }, 600);
+    </script>
+</body>
+</html>
